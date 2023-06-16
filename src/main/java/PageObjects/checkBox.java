@@ -4,21 +4,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class checkBox extends Globals {
+public class checkBox  {
 
     WebDriver driver;
     public checkBox(WebDriver driver){
 
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
     public checkBox() {
 
         super();
     }
+//public checkBox(WebDriver driver){
+//
+//    PageFactory.initElements(driver, this);
+//}
 
-    @FindBy(xpath = "//*[@id=\"__next\"]/div/section[2]/div/div/div[1]/div[1]/ul/li[2]/a")
-    public By checkBoxDemo;
+//    @FindBy(xpath = "//*[@id=\"__next\"]/div/section[2]/div/div/div/div/ul/li[2]/a")
+//    public By checkBoxDemo;
+
+    public String checkBoxDemo = "//*[@id=\"__next\"]/div/section[2]/div/div/div/div/ul/li[2]/a";
     @FindBy(xpath = "//*[@id=\"isAgeSelected\"]")
     public By singleBox;
     @FindBy (xpath = "//*[@id=\"ex1-check1\"]")
@@ -31,5 +39,6 @@ public class checkBox extends Globals {
     public WebElement option4;
     @FindBy(xpath = "//*[@id=\"box\"]")
     public WebElement checkAll;
+
 
 }

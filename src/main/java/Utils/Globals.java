@@ -10,7 +10,17 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class Globals {
-    WebDriver driver;
+
+   public WebDriver driver;
+
+   public Globals(WebDriver driver){
+       this.driver = driver;
+   }
+
+   public Globals(){
+       super();
+   }
+
     @BeforeMethod
     public void setup(){
         ChromeOptions options = new ChromeOptions();
@@ -20,6 +30,7 @@ public class Globals {
         driver.manage().window().maximize();
         driver.get("https://www.lambdatest.com/selenium-playground/");
     }
+
     public WebElement findElement(By locator){
 
         return driver.findElement(locator);
@@ -27,11 +38,19 @@ public class Globals {
 
     public void clickElement(By locator){
 
-        findElement(locator).click();
+        driver.findElement(locator).click();
     }
+    public void clickElement2(String locator){
+
+        driver.findElement(By.xpath(locator)).click();
+    }
+
+
     @AfterMethod
     public void tearDown() throws InterruptedException {
         Thread.sleep(6000);
         driver.quit();
     }
+
+
 }
